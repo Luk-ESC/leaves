@@ -52,7 +52,11 @@ pub fn restore(config: crate::config::Config, automatic: bool, path: String) {
 
     finds.sort_unstable_by_key(|x| std::cmp::Reverse(x.meta.created().unwrap()));
 
-    let chosen = if automatic {
+    if finds.is_empty() {
+        panic!("No file to restore found!");
+    }
+
+    let chosen = if automatic || finds.len() == 1 {
         finds.swap_remove(0)
     } else {
         println!("{} finds: ", finds.len());
