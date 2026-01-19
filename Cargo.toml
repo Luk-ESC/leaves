@@ -1,0 +1,12 @@
+[package]
+name = "leaves"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+clap = { version = "4.5.54", features = ["derive"] }
+confy = "2.0.0"
+inquire = "0.9.1"
+regex = "1.12.2"
+serde = { version = "1.0.228", features = ["derive"] }
+walkdir = "2.5.0"
