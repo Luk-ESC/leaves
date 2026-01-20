@@ -13,7 +13,7 @@ pub struct Args {
     pub last_n_weeks: Option<u16>,
 
     /// Ignore hidden files (all starting with .)
-    #[arg(short, long, default_value_t = true)]
+    #[arg(short, long, default_value_t = false)]
     pub ignore_hidden: bool,
 
     #[command(subcommand)]

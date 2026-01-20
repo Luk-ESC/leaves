@@ -6,6 +6,8 @@ use std::path::PathBuf;
 
 use inquire::Select;
 
+use crate::cli::Args;
+
 struct FileToRestore {
     path: PathBuf,
     meta: Metadata,
@@ -23,7 +25,7 @@ impl fmt::Display for FileToRestore {
     }
 }
 
-pub fn restore(config: crate::config::Config, automatic: bool, path: String) {
+pub fn restore(config: crate::config::Config, args: &Args, automatic: bool, path: &str) {
     let dest = std::path::absolute(path)
         .unwrap()
         .normalize_lexically()
@@ -40,8 +42,7 @@ pub fn restore(config: crate::config::Config, automatic: bool, path: String) {
         .collect();
 
     let mut finds = vec![];
-    for root in std::fs::read_dir(config.path).unwrap() {
-        let mut file = root.unwrap().path();
+    for mut file in crate::roots::get_all(&config, args) {
         file.push(&suffix);
 
         if file.exists() {

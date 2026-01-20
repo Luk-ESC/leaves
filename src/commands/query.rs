@@ -1,16 +1,11 @@
 use regex::Regex;
-use walkdir::WalkDir;
 
-pub fn query(config: crate::config::Config, path: bool, search: String) {
-    let search = Regex::new(&search).unwrap();
+use crate::cli::Args;
 
-    let walkdir = WalkDir::new(config.path).into_iter();
+pub fn query(config: crate::config::Config, args: &Args, path: bool, search: &str) {
+    let search = Regex::new(search).unwrap();
 
-    for entry in walkdir {
-        let Ok(entry) = entry else {
-            continue;
-        };
-
+    for entry in crate::roots::walk_all(&config, args) {
         let is_match = if path {
             search.is_match(&entry.path().to_string_lossy())
         } else {
