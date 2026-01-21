@@ -305,19 +305,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "bbd2bcb4c963f2ddae06a2efc7e9f3591312473c50c6685e1f298068316e66fe"
 
 [[package]]
-name = "leaves"
-version = "0.1.0"
-dependencies = [
- "clap",
- "confy",
- "inquire",
- "regex",
- "serde",
- "serde_json",
- "walkdir",
-]
-
-[[package]]
 name = "libc"
 version = "0.2.180"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -349,6 +336,19 @@ name = "log"
 version = "0.4.29"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5e5032e24019045c762d3c0f28f5b6b8bbf38563a65908389bf7978758920897"
+
+[[package]]
+name = "lv"
+version = "0.1.0"
+dependencies = [
+ "clap",
+ "confy",
+ "inquire",
+ "regex",
+ "serde",
+ "serde_json",
+ "walkdir",
+]
 
 [[package]]
 name = "memchr"

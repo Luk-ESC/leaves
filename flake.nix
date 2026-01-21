@@ -42,12 +42,12 @@
       in
       rec {
         # For `nix build` & `nix run`:
-        defaultPackage = naersk'.buildPackage {
+        packages.default = naersk'.buildPackage {
           src = ./.;
         };
 
         # For `nix develop` (optional, can be skipped):
-        devShell = pkgs.mkShell {
+        shells.default = pkgs.mkShell {
           nativeBuildInputs = [
             toolchain
           ];
@@ -104,6 +104,7 @@
           in
           {
             environment.etc."leaves.json".text = builtins.toJSON out_conf;
+            environment.systemPackages = [ packages.default ];
           };
       }
     );
