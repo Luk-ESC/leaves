@@ -35,6 +35,7 @@ impl PersistentLocations {
     pub fn should_be_persisted(&self, location: &str, path: &str) -> PersistStatus {
         let mut location_found = false;
         if let Some(files) = self.files.get(location) {
+            location_found = true;
             if files.iter().any(|x| x.starts_with(path)) {
                 return PersistStatus::ParentOfDir;
             }
