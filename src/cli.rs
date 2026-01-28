@@ -45,4 +45,8 @@ pub enum Commands {
     /// Check persistent data for leftover files
     #[command(alias = "c")]
     Check,
+
+    /// Print all persisted paths
+    #[command(alias = "p")]
+    Paths,
 }

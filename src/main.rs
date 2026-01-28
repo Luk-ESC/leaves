@@ -22,5 +22,6 @@ fn main() {
         Commands::Query { path, search } => commands::query::query(config, &args, *path, search),
 
         Commands::Check => commands::check::check(config, &args),
+        Commands::Paths => commands::paths::paths(config, &args),
     }
 }
